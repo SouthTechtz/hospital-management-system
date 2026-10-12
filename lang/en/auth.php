@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'login_title' => 'Secure sign in',
+    'username' => 'Username',
+    'password' => 'Password',
+    'mfa_code' => 'Authentication code',
+    'remember_me' => 'Keep me signed in on this device',
+    'sign_in' => 'Sign in',
+    'failed' => 'The provided credentials are incorrect.',
+    'account_deactivated' => 'This account is deactivated. Contact the system administrator.',
+    'throttle' => 'Too many attempts. Try again in :seconds seconds.',
+    'password_changed' => 'Password changed. Use the new password at the next sign in.',
+    'session_timeout' => 'Your session has expired. Sign in again to continue.',
+    'locked' => 'Account temporarily locked due to failed attempts.',
+    'change_password_title' => 'Change password',
+    'change_password_explainer' => 'A security policy requires a new password on first sign in.',
+    'force_password_hint' => 'A security policy requires you to set a new password before you can continue.',
+    'password_rules' => 'At least :min characters, and not found in known breach lists.',
+    'update_password' => 'Set new password',
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
+    'confirm_password' => 'Confirm password',
+    'password_requirements' => 'At least :min characters, and not found in known breach lists.',
+    'save_password' => 'Change password',
+    'login_failed_audit' => 'Failed login attempt recorded.',
+];

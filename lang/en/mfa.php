@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'code_invalid' => 'The authentication code is invalid or has expired.',
+    'setup_complete' => 'Two-factor authentication enabled on this account.',
+    'setup_title' => 'Set up two-factor authentication',
+    'setup_intro' => 'Scan the QR code with your authenticator app to finish setting up two-factor authentication.',
+    'qr_alt' => 'Two-factor authentication QR code',
+    'manual_uri' => 'Manual setup URI',
+    'confirm' => 'Confirm and enable',
+    'setup_step1' => 'Scan the QR code with an authenticator app.',
+    'setup_step2' => 'Or enter the secret manually.',
+    'setup_step3' => 'Enter the 6-digit code from the app to confirm.',
+    'secret_label' => 'Secret key',
+    'code_label' => 'Verification code',
+    'confirm_setup' => 'Confirm and enable',
+    'challenge_title' => 'Two-factor challenge',
+    'challenge_intro' => 'Enter the 6-digit code from your authenticator app to sign in.',
+    'challenge_explainer' => 'Enter the 6-digit code from your authenticator app.',
+    'verify' => 'Verify code',
+    'enabled' => 'Two-factor authentication is enabled.',
+    'disabled' => 'Two-factor authentication disabled.',
+    'disable' => 'Disable two-factor authentication',
+    'issuer' => 'Tanzania RHH HMS',
+];

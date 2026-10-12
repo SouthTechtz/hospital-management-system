@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'login_title' => 'Kuingia kwa usalama',
+    'username' => 'Jina la mtumiaji',
+    'password' => 'Nenosiri',
+    'mfa_code' => 'Msimbo wa uthibitisho',
+    'remember_me' => 'Nisadikishe kwenye kifaa hiki',
+    'sign_in' => 'Ingia',
+    'failed' => 'Vitambulisho vilivyotolewa si sahihi.',
+    'account_deactivated' => 'Akaunti hii imezimwa. Wasiliana na msimamizi wa mfumo.',
+    'throttle' => 'Majaribio mengi sana. Jaribu tena baada ya sekunde :seconds.',
+    'password_changed' => 'Nenosiri limebadilishwa. Tumia nenosiri jipya kwenye kuingia kwa pili.',
+    'session_timeout' => 'Kipindi chako kimeisha. Ingia tena kuendelea.',
+    'locked' => 'Akaunti imefungwa kwa muda kutokana na majaribio yaliyoshindikana.',
+    'change_password_title' => 'Badilisha nenosiri',
+    'change_password_explainer' => 'Sera ya usalama inahitaji nenosiri jipya katika kuingia kwanza.',
+    'force_password_hint' => 'Sera ya usalama inakuhitaji uweke nenosiri jipya kabla ya kuendelea.',
+    'password_rules' => 'Angalau herufi :min, na halipatikani katika orodha za uvunjaji.',
+    'update_password' => 'Weka nenosiri jipya',
+    'current_password' => 'Nenosiri la sasa',
+    'new_password' => 'Nenosiri jipya',
+    'confirm_password' => 'Thibitisha nenosiri',
+    'password_requirements' => 'Angalau herufi :min, na halipatikani katika orodha za uvunjaji.',
+    'save_password' => 'Badilisha nenosiri',
+    'login_failed_audit' => 'Jaribio la kuingia lililoshindikana limeandikwa.',
+];

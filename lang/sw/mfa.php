@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'code_invalid' => 'Msimbo wa uthibitisho si sahihi au umeisha muda wake.',
+    'setup_complete' => 'Uthibitisho wa hatua mbili umewezeshwa kwenye akaunti hii.',
+    'setup_title' => 'Weka uthibitisho wa hatua mbili',
+    'setup_intro' => 'Fagia msimbo wa QR na programu yako ya uthibitishaji ili kukamilisha usanidi wa hatua mbili.',
+    'qr_alt' => 'Msimbo wa QR wa uthibitisho wa hatua mbili',
+    'manual_uri' => 'URI ya usanidi wa mikono',
+    'confirm' => 'Thibitisha na wezesha',
+    'setup_step1' => 'Fagia msimbo wa QR kwa programu ya uthibitishaji.',
+    'setup_step2' => 'Au ingiza siri kwa mikono.',
+    'setup_step3' => 'Ingiza msimbo wa tarakimu 6 kutoka kwenye programu kuthibitisha.',
+    'secret_label' => 'Ufunguo wa siri',
+    'code_label' => 'Msimbo wa uthibitisho',
+    'confirm_setup' => 'Thibitisha na wezesha',
+    'challenge_title' => 'Changamoto ya hatua mbili',
+    'challenge_intro' => 'Ingiza msimbo wa tarakimu 6 kutoka kwenye programu yako ya uthibitishaji ili kuingia.',
+    'challenge_explainer' => 'Ingiza msimbo wa tarakimu 6 kutoka kwenye programu yako ya uthibitishaji.',
+    'verify' => 'Thibitisha msimbo',
+    'enabled' => 'Uthibitisho wa hatua mbili umewezeshwa.',
+    'disabled' => 'Uthibitisho wa hatua mbili umezimwa.',
+    'disable' => 'Zima uthibitisho wa hatua mbili',
+    'issuer' => 'Tanzania RHH HMS',
+];
