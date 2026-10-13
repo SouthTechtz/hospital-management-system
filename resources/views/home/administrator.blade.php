@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="grid grid-4 mb-4">
+    <div class="grid grid-4 mb-4" data-dashboard-stats="{{ route('home.ajax') }}">
         <div class="stat">
             <div class="stat-value">{{ $users }}</div>
             <div class="stat-label">{{ __('home.users') }}</div>

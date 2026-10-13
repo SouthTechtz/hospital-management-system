@@ -10,8 +10,8 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-body table-wrap">
+    <div class="card" data-auto-refresh data-auto-refresh-url="{{ route('triage.index') }}" data-auto-refresh-interval="30000">
+        <div class="card-body table-wrap" data-auto-refresh-content>
             @if ($waiting->isEmpty())
                 <p class="muted">{{ __('home.no_waiting') }}</p>
             @else

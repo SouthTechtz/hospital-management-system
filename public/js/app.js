@@ -140,6 +140,45 @@
   });
 
   /* ------------------------------------------------------------------ */
+  /* Simple AJAX refresh for dashboard stats                             */
+  /* ------------------------------------------------------------------ */
+  ready(function () {
+    var statEl = document.querySelector("[data-dashboard-stats]");
+    var endpoint = statEl ? statEl.getAttribute("data-dashboard-stats") : null;
+    if (!endpoint) return;
+    setInterval(function () {
+      fetch(endpoint, { headers: { "Accept": "application/json" } })
+        .then(function (r) { return r.json(); })
+        .catch(function () {});
+    }, 60000);
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Realtime refresh hooks (polling) for lists                           */
+  /* ------------------------------------------------------------------ */
+  ready(function () {
+    document.querySelectorAll("[data-auto-refresh]").forEach(function (el) {
+      var url = el.getAttribute("data-auto-refresh-url");
+      var interval = parseInt(el.getAttribute("data-auto-refresh-interval") || "60000", 10);
+      if (!url) return;
+      setInterval(function () {
+        fetch(url, { headers: { "Accept": "text/html" } })
+          .then(function (r) { return r.text(); })
+          .then(function (html) {
+            var wrapper = document.createElement("div");
+            wrapper.innerHTML = html;
+            var current = el.querySelector("[data-auto-refresh-content]") || el;
+            var nextContent = wrapper.querySelector("[data-auto-refresh-content]") || wrapper;
+            if (nextContent.innerHTML !== current.innerHTML) {
+              current.innerHTML = nextContent.innerHTML;
+            }
+          })
+          .catch(function () {});
+      }, interval);
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
   /* Repeatable rows (next of kin, diagnoses, orders)                    */
   /* ------------------------------------------------------------------ */
   function bindRowControls(container) {
