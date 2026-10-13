@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ? $title.' - '.__('ui.app_name') : __('ui.app_name') }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" nonce="{{ $cspNonce }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
 <div class="auth-shell">
