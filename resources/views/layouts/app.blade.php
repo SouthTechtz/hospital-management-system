@@ -39,11 +39,11 @@
         <nav class="sidebar-nav" aria-label="{{ __('nav.main_menu') }}">
             <div class="nav-group">
                 <div class="nav-group-title">{{ __('nav.group_my_work') }}</div>
-                <a class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">{{ __('nav.home') }}</a>
+                <a class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}" title="{{ __('nav.home') }}"><span aria-hidden="true">📊</span> {{ __('nav.home') }}</a>
                 @if ($canSearchPatients)
-                    <a class="nav-item {{ request()->routeIs('patients.*') ? 'active' : '' }}" href="{{ route('patients.index') }}">{{ __('nav.patients') }}</a>
+                    <a class="nav-item {{ request()->routeIs('patients.*') ? 'active' : '' }}" href="{{ route('patients.index') }}" title="{{ __('nav.patients') }}"><span aria-hidden="true">👤</span> {{ __('nav.patients') }}</a>
                 @endif
-                <a class="nav-item {{ request()->routeIs('triage.*') ? 'active' : '' }}" href="{{ route('triage.index') }}">{{ __('nav.triage') }}</a>
+                <a class="nav-item {{ request()->routeIs('triage.*') ? 'active' : '' }}" href="{{ route('triage.index') }}" title="{{ __('nav.triage') }}"><span aria-hidden="true">🚨</span> {{ __('nav.triage') }}</a>
             </div>
 
             <div class="nav-group">

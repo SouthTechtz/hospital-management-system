@@ -283,6 +283,17 @@ h4 { font-size: 0.9rem; }
 .nok-row:first-child { padding-top: 0; border-top: none; }
 .nok-primary { grid-column: 1 / -1; }
 
+/* Modal */
+.modal { display:none; position:fixed; inset:0; z-index:50; }
+.modal.open { display:block; }
+.modal-backdrop { position:absolute; inset:0; background:rgba(2,6,23,0.55); }
+.modal-content { position:relative; background:var(--hms-surface); border:1px solid var(--hms-border); border-radius:var(--hms-radius-lg); margin:2rem auto; max-width:900px; max-height:90vh; overflow:auto; box-shadow:var(--hms-shadow); }
+.modal-header { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--hms-border); }
+.modal-body { padding:14px; }
+
+/* Nav icons */
+.nav-item span[aria-hidden="true"] { margin-right: .35rem; }
+
 /* ------------------------------------------------------------------ */
 /* Alerts and banners                                                  */
 /* ------------------------------------------------------------------ */

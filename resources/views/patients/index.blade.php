@@ -8,11 +8,6 @@
             <h1 class="page-title">{{ __('patients.title') }}</h1>
             <p class="muted small">{{ __('patients.mpi_hint') }}</p>
         </div>
-        <div class="page-actions">
-            @can('create', App\Models\Patient::class)
-                <a class="btn btn-primary" href="{{ route('patients.create') }}">{{ __('patients.register') }}</a>
-            @endcan
-        </div>
     </div>
 
     <div class="card">
@@ -24,6 +19,9 @@
                     <a class="btn btn-ghost" href="{{ route('patients.index') }}">{{ __('admin.clear_filters') }}</a>
                 @endif
             </form>
+            @can('create', App\Models\Patient::class)
+                <button type="button" class="btn btn-primary" data-open-modal="add-patient-modal">{{ __('patients.register') }}</button>
+            @endcan
         </div>
         <div class="card-body table-wrap">
             @if ($patients->isEmpty())
@@ -59,4 +57,46 @@
             @endif
         </div>
     </div>
+
+    @can('create', App\Models\Patient::class)
+    <div id="add-patient-modal" class="modal" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-content" role="document">
+            <div class="modal-header">
+                <h2>{{ __('patients.register_title') }}</h2>
+                <button type="button" class="btn btn-ghost" data-close-modal>×</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('patients.store') }}" data-duplicate-form>
+                    @csrf
+                    @include('patients._form-fields', ['patient' => null])
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">{{ __('patients.register') }}</button>
+                        <button type="button" class="btn btn-ghost" data-close-modal>{{ __('ui.cancel') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endcan
 @endsection
+
+@push('scripts')
+    <script>
+        (function() {
+            document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    var id = btn.getAttribute('data-open-modal');
+                    var m = document.getElementById(id);
+                    if(m) m.classList.add('open');
+                });
+            });
+            document.querySelectorAll('[data-close-modal], .modal-backdrop').forEach(function(el){
+                el.addEventListener('click', function(){
+                    var m = el.closest('.modal');
+                    if(m) m.classList.remove('open');
+                });
+            });
+        })();
+    </script>
+@endpush
