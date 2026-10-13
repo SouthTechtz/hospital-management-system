@@ -111,7 +111,7 @@
             <button type="button" class="sidebar-toggle" data-sidebar-toggle>{{ __('ui.menu') }}</button>
             <div class="topbar-title">{{ $title ?: __('ui.app_name') }}</div>
 
-            @if ($canSearchPatients)
+            @if ($canSearchPatients && !request()->routeIs('patients.index'))
             <div class="topbar-search">
                 <form method="GET" action="{{ route('patients.index') }}" role="search">
                     <input class="input" type="search" name="q" value="{{ request('q') }}" placeholder="{{ __('nav.search_patients') }}" aria-label="{{ __('nav.search_patients') }}">

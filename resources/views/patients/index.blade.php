@@ -11,16 +11,15 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            <form method="GET" action="{{ route('patients.index') }}" class="filter-bar grow" role="search">
+        <div class="card-header" style="justify-content: space-between; align-items: center;">
+            <form method="GET" action="{{ route('patients.index') }}" class="filter-bar grow" role="search" style="flex-grow: 1;">
                 <input class="input" type="search" name="q" value="{{ $term }}" placeholder="{{ __('patients.search_placeholder') }}" aria-label="{{ __('patients.search_placeholder') }}">
-                <button class="btn btn-primary" type="submit">{{ __('ui.search') }}</button>
                 @if ($term !== '')
                     <a class="btn btn-ghost" href="{{ route('patients.index') }}">{{ __('admin.clear_filters') }}</a>
                 @endif
             </form>
             @can('create', App\Models\Patient::class)
-                <button type="button" class="btn btn-primary" id="btn-add-patient" data-open-modal="add-patient-modal">{{ __('patients.register') }}</button>
+                <button type="button" class="btn btn-primary" id="btn-add-patient" data-open-modal="add-patient-modal" style="margin-left: auto;">{{ __('patients.register') }}</button>
             @endcan
         </div>
         <div class="card-body table-wrap">
