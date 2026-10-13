@@ -119,6 +119,7 @@ class HomeController extends Controller
                 'pendingBreakGlass' => \App\Models\BreakGlassAccess::where('status', 'active')->count(),
                 'latestAudit' => \App\Models\AuditLog::latest('id')->limit(15)->get(),
                 'latestOrders' => Order::with('patient')->latest('ordered_at')->limit(10)->get(),
+                'staff' => User::with('primaryRole', 'department')->where('is_active', true)->orderBy('username')->limit(20)->get(),
             ]),
         };
     }

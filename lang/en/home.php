@@ -31,4 +31,6 @@ return [
     'no_reviews' => 'No break-glass access to review.',
     'no_assignments' => 'No patients currently assigned to you.',
     'no_audit_events' => 'No audit events recorded.',
+    'staff_overview' => 'Staff Overview',
+    'no_staff' => 'No staff records.',
 ];

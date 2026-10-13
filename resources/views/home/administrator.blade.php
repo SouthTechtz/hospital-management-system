@@ -124,6 +124,40 @@
 
     <div class="card">
         <div class="card-header">
+            <h2>{{ __('home.staff_overview') }}</h2>
+        </div>
+        <div class="card-body table-wrap">
+            @if (isset($staff) && $staff->isNotEmpty())
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{{ __('admin.name') }}</th>
+                            <th>{{ __('admin.username') }}</th>
+                            <th>{{ __('admin.role') }}</th>
+                            <th>{{ __('admin.department') }}</th>
+                            <th>{{ __('admin.is_active') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($staff as $s)
+                            <tr>
+                                <td>{{ $s->full_name }}</td>
+                                <td class="mono">{{ $s->username }}</td>
+                                <td>{{ $s->primaryRole?->display_name ?? ($s->primaryRole?->name ?? '-') }}</td>
+                                <td>{{ $s->department?->name ?? '-' }}</td>
+                                <td>{{ $s->is_active ? __('ui.yes') : __('ui.no') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p class="muted">{{ __('home.no_staff') }}</p>
+            @endif
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
             <h2>{{ __('home.latest_audit') }}</h2>
         </div>
         <div class="card-body table-wrap">
