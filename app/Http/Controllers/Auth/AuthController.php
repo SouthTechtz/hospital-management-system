@@ -69,7 +69,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
         $request->session()->put('hms.login_at', now()->toIso8601String());
         $request->session()->put('hms.last_activity', now()->toIso8601String());
-        $request->session()->put('hms.mfa_verified', false);
+        $request->session()->put('hms.mfa_verified', true);
 
         $user->forceFill([
             'failed_login_attempts' => 0,
@@ -85,14 +85,6 @@ class AuthController extends Controller
             actor: $user,
             description: 'User signed in',
         );
-
-        if ($user->requiresMfa() && ! $user->mfa_enabled) {
-            return redirect()->route('mfa.setup');
-        }
-
-        if ($user->mfa_enabled) {
-            return redirect()->route('mfa.challenge');
-        }
 
         return redirect()->intended(route('home'));
     }

@@ -43,17 +43,13 @@ Route::middleware('auth')->group(function () {
     Route::get('password/change', [PasswordController::class, 'showChangeForm'])->name('password.change');
     Route::post('password/change', [PasswordController::class, 'change'])->name('password.change.attempt');
 
-    Route::get('mfa/setup', [MfaController::class, 'showSetup'])->name('mfa.setup');
-    Route::post('mfa/setup', [MfaController::class, 'confirmSetup'])->name('mfa.setup.confirm');
-    Route::get('mfa/challenge', [MfaController::class, 'showChallenge'])->name('mfa.challenge');
-    Route::post('mfa/challenge', [MfaController::class, 'verifyChallenge'])->name('mfa.challenge.verify');
-    Route::post('mfa/disable', [MfaController::class, 'disable'])->name('mfa.disable');
+    // MFA removed - simplified auth
 });
 
 // ---------------------------------------------------------------------------
 // Application screens
 // ---------------------------------------------------------------------------
-Route::middleware(['auth', 'password.changed', 'mfa'])->group(function () {
+Route::middleware(['auth', 'password.changed'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Patients and the Master Patient Index (Part D7.3/4)

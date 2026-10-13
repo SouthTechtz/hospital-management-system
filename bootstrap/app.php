@@ -27,7 +27,6 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'check.permission' => CheckPermission::class,
-            'mfa' => EnsureMfaVerified::class,
             'password.changed' => EnsurePasswordChanged::class,
         ]);
     })
