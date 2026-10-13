@@ -13,8 +13,16 @@
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <form method="GET" action="{{ route('admin.users.index') }}" class="toolbar" style="gap: .5rem">
+                <input type="search" name="q" value="{{ request('q') }}" placeholder="{{ __('ui.search') }}" class="form-control" style="max-width: 200px" aria-label="{{ __('ui.search') }}">
+                <button type="submit" class="btn btn-sm btn-secondary">{{ __('ui.search') }}</button>
+                @if(request('q'))
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-sm btn-link">{{ __('ui.clear') }}</a>
+                @endif
+            </form>
+        </div>
         <div class="card-body table-wrap">
-            @php $users = \App\Models\User::with('facility')->orderBy('last_name')->paginate(25); @endphp
             @if ($users->isEmpty())
                 <p class="muted">{{ __('admin.no_users') }}</p>
             @else

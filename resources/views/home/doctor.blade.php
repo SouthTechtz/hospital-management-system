@@ -65,7 +65,9 @@
                         <thead>
                             <tr>
                                 <th>{{ __('triage.patient') }}</th>
+                                <th>{{ __('orders.type') }}</th>
                                 <th>{{ __('ui.status') }}</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,7 +77,13 @@
                                         {{ $order->patient->full_name }}
                                         <div class="small muted mono">{{ $order->patient->mrn }}</div>
                                     </td>
-                                    <td><span class="tag tag-info">{{ __($order->order_type->labelKey()) }}</span></td>
+                                    <td>{{ __($order->order_type->labelKey()) }}</td>
+                                    <td><span class="tag tag-info">{{ __($order->status->labelKey()) }}</span></td>
+                                    <td class="num">
+                                        @can('order.view', $order)
+                                            <a class="btn btn-sm btn-secondary" href="{{ route('orders.show', $order) }}">{{ __('ui.view') }}</a>
+                                        @endcan
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

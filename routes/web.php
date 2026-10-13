@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
 // ---------------------------------------------------------------------------
 Route::middleware(['auth', 'password.changed'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/ajax', [HomeController::class, 'ajaxStats'])->name('home.ajax');
 
     // Patients and the Master Patient Index (Part D7.3/4)
     Route::get('patients', [PatientController::class, 'index'])->name('patients.index');

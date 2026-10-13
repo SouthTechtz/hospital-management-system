@@ -30,6 +30,21 @@ class HomeController extends Controller
         return $this->renderHome($role, $user);
     }
 
+    public function ajaxStats(Request $request)
+    {
+        $this->authorize('viewAny', User::class);
+        $data = [
+            'users' => User::where('is_active', true)->count(),
+            'patients' => \App\Models\Patient::count(),
+            'openEncounters' => Encounter::where('status', 'open')->count(),
+            'openInvoices' => Invoice::whereIn('status', [InvoiceStatus::Open->value, InvoiceStatus::PartiallyPaid->value])->count(),
+            'waiting' => \App\Models\QueueEntry::whereNull('served_at')->count(),
+            'pendingBreakGlass' => \App\Models\BreakGlassAccess::where('status', 'active')->count(),
+            'failures' => DB::table('failed_jobs')->count(),
+        ];
+        return response()->json($data);
+    }
+
     private function renderHome(string $role, User $user)
     {
         return match ($role) {
@@ -91,11 +106,19 @@ class HomeController extends Controller
             ]),
             default => view('home.administrator', [
                 'users' => User::with('roles')->where('is_active', true)->count(),
+                'totalUsers' => User::count(),
+                'inactiveUsers' => User::where('is_active', false)->count(),
                 'patients' => \App\Models\Patient::count(),
+                'recentPatients' => \App\Models\Patient::with('facility')->latest()->limit(10)->get(),
                 'openEncounters' => Encounter::where('status', 'open')->count(),
+                'totalEncounters' => Encounter::count(),
                 'openInvoices' => Invoice::whereIn('status', ['open', 'partially_paid'])->count(),
+                'paidInvoices' => Invoice::where('status', InvoiceStatus::Paid->value)->count(),
+                'totalInvoices' => Invoice::count(),
                 'failures' => DB::table('failed_jobs')->count(),
+                'pendingBreakGlass' => \App\Models\BreakGlassAccess::where('status', 'active')->count(),
                 'latestAudit' => \App\Models\AuditLog::latest('id')->limit(15)->get(),
+                'latestOrders' => Order::with('patient')->latest('ordered_at')->limit(10)->get(),
             ]),
         };
     }
