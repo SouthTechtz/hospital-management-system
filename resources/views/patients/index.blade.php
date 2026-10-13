@@ -20,7 +20,7 @@
                 @endif
             </form>
             @can('create', App\Models\Patient::class)
-                <button type="button" class="btn btn-primary" data-open-modal="add-patient-modal">{{ __('patients.register') }}</button>
+                <button type="button" class="btn btn-primary" id="btn-add-patient" data-open-modal="add-patient-modal">{{ __('patients.register') }}</button>
             @endcan
         </div>
         <div class="card-body table-wrap">
@@ -81,22 +81,3 @@
     @endcan
 @endsection
 
-@push('scripts')
-    <script>
-        (function() {
-            document.querySelectorAll('[data-open-modal]').forEach(function(btn){
-                btn.addEventListener('click', function(){
-                    var id = btn.getAttribute('data-open-modal');
-                    var m = document.getElementById(id);
-                    if(m) m.classList.add('open');
-                });
-            });
-            document.querySelectorAll('[data-close-modal], .modal-backdrop').forEach(function(el){
-                el.addEventListener('click', function(){
-                    var m = el.closest('.modal');
-                    if(m) m.classList.remove('open');
-                });
-            });
-        })();
-    </script>
-@endpush

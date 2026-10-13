@@ -249,4 +249,20 @@
       }
     }
   });
+
+  ready(function () {
+    document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-open-modal');
+        var m = document.getElementById(id);
+        if(m) m.classList.add('open');
+      });
+    });
+    document.querySelectorAll('[data-close-modal], .modal-backdrop').forEach(function(el){
+      el.addEventListener('click', function(){
+        var m = el.closest('.modal');
+        if(m) m.classList.remove('open');
+      });
+    });
+  });
 })();
